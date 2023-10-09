@@ -6,5 +6,5 @@ pip install -r requirements.txt
 ```
 # Run application 
 ```bash
-python ./main.py
+python -m app
 ```
