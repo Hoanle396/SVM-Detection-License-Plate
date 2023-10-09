@@ -1,0 +1,14 @@
+flask==2.2.3
+flask_cors
+pandas==1.5.3
+xmltodict
+pymongo
+flask-crontab
+openpyxl
+flask-compress
+flask-restplus
+Flask-JWT-Extended
+opencv-python
+keras
+tensorflow==1.15.0
+pytesseract
