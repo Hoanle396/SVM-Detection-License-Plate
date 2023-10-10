@@ -81,4 +81,4 @@ def detect(Ivehicle):
 
                     plate_info += result
 
-    return plate_info
+    return plate_info if plate_info and len(plate_info) > 7 else None

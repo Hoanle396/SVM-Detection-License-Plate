@@ -10,13 +10,17 @@ def extractRoute(app):
     def upload():
         try:
             if "image" not in request.files:
-                return {"detail": "No file found"}, 400
+                return {
+                "status": "FAILED",
+                "result": None,
+                "message": "No image found!",
+            }, 400
             image_file = request.files["image"]
             image = cv2.imdecode(
                 np.fromstring(image_file.read(), np.uint8), cv2.IMREAD_UNCHANGED
             )
             result = detect(image)
-            if result != "":
+            if result is not None:
                 return {
                     "status": "OK",
                     "result": result,
