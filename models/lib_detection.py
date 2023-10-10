@@ -161,7 +161,7 @@ def reconstruct(I, Iresized, Yr, lp_threshold):
     side = ((208 + 40) / 2) / net_stride
 
     one_line = (470, 110)
-    two_lines = (280, 200)
+    two_lines = (320, 220)
 
     Probs = Yr[..., 0]
     Affines = Yr[..., 2:]

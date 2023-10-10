@@ -9,10 +9,8 @@ def sort_contours(cnts):
     reverse = False
     i = 0
     boundingBoxes = [cv2.boundingRect(c) for c in cnts]
-    (cnts, boundingBoxes) = zip(
-        *sorted(zip(cnts, boundingBoxes), key=lambda b: b[1][i], reverse=reverse)
-    )
-    return cnts
+    sorted_contours = [cnt for _, cnt in sorted(zip(boundingBoxes, cnts), key=lambda b: (b[0][1] >= 60, b[0][i]), reverse=reverse)]
+    return sorted_contours
 
 
 def fine_tune(lp):
@@ -61,8 +59,8 @@ def detect(Ivehicle):
         for c in sort_contours(cont):
             (x, y, w, h) = cv2.boundingRect(c)
             ratio = h / w
-            if 1.5 <= ratio <= 3.5:
-                if h / roi.shape[0] >= 0.6:
+            if 1.5 <= ratio <= 5:  # Chon cac contour dam bao ve ratio w/h
+                if h / roi.shape[0] >= 0.6 if lp_type == 1 else 0.8:  # Chon cac contour cao tu 60% bien so tro len
                     cv2.rectangle(roi, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
                     curr_num = thre_mor[y : y + h, x : x + w]
