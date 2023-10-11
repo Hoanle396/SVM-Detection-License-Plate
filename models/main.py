@@ -59,8 +59,8 @@ def detect(Ivehicle):
         for c in sort_contours(cont):
             (x, y, w, h) = cv2.boundingRect(c)
             ratio = h / w
-            if 1.5 <= ratio <= 5:  # Chon cac contour dam bao ve ratio w/h
-                if h / roi.shape[0] >= 0.6 if lp_type == 1 else 0.8:  # Chon cac contour cao tu 60% bien so tro len
+            if 1.5 <= ratio <= 5 and h >= 60:
+                if h / roi.shape[0] >= 0.6 if lp_type == 1 else 0.8: 
                     cv2.rectangle(roi, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
                     curr_num = thre_mor[y : y + h, x : x + w]
