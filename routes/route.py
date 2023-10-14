@@ -1,8 +1,10 @@
-from flask import jsonify, request
-import cv2
-from models.main import detect
-import numpy as np
 import datetime
+
+import cv2
+import numpy as np
+from flask import  request
+
+from models.main import detect
 
 
 def extractRoute(app):

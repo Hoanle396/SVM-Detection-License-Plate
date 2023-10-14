@@ -2,24 +2,12 @@ import cv2
 import numpy as np
 from .lib_detection import load_model, detect_lp, im2single
 
-char_list = "0123456789ABCDEFGHKLMNPRSTUVXYZ"
-
-
 def sort_contours(cnts):
     reverse = False
     i = 0
     boundingBoxes = [cv2.boundingRect(c) for c in cnts]
     sorted_contours = [cnt for _, cnt in sorted(zip(boundingBoxes, cnts), key=lambda b: (b[0][1] >= 60, b[0][i]), reverse=reverse)]
     return sorted_contours
-
-
-def fine_tune(lp):
-    newString = ""
-    for i in range(len(lp)):
-        if lp[i] in char_list:
-            newString += lp[i]
-    return newString
-
 
 def detect(Ivehicle):
     wpod_net_path = "models/wpod-net.json"

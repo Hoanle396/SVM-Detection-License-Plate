@@ -1,5 +1,4 @@
 import cv2
-import os
 import numpy as np
 import glob
 
@@ -28,19 +27,6 @@ def get_digit_data(path):
 
     for number in range(65, 91):
         print(number)
-        i=0
-        for img_org_path in glob.iglob(path + str(number) + '/*.jpg'):
-            print(img_org_path)
-            img = cv2.imread(img_org_path, 0)
-            img = np.array(img)
-            img = img.reshape(-1, digit_h * digit_w)
-
-            print(img.shape)
-
-            digit_list.append(img)
-            label_list.append([int(number)])
-
-    for number in range(45,46):
         i=0
         for img_org_path in glob.iglob(path + str(number) + '/*.jpg'):
             print(img_org_path)
