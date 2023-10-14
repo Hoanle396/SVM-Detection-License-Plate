@@ -18,7 +18,6 @@ for number in range(10):
 
 for number in range(65, 91):
     number = chr(number)
-    print(image_path + str(number))
     if os.path.isdir(image_path + str(number)):
         for img_org_path in glob.iglob(image_path + str(number) + "/*.jpg"):
             img = cv2.imread(img_org_path, 0)

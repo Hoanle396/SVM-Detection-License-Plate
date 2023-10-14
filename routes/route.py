@@ -35,6 +35,6 @@ def extractRoute(app):
             print(e)
             return {
                 "status": "FAILED",
-                "result": None,
+                "result": e.__str__(),
                 "message": "Something went wrong!",
             }, 500

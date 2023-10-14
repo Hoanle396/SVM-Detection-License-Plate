@@ -203,8 +203,6 @@ def reconstruct(I, Iresized, Yr, lp_threshold):
     final_labels = nms(labels, 0.1)
     final_labels_frontal = nms(labels_frontal, 0.1)
 
-    print(final_labels_frontal)
-
     out_size, lp_type = (
         (two_lines, 2)
         if ((final_labels_frontal[0].wh()[0] / final_labels_frontal[0].wh()[1]) < 1.7)
@@ -223,7 +221,6 @@ def reconstruct(I, Iresized, Yr, lp_threshold):
 
             Ilp = cv2.warpPerspective(I, H, out_size, borderValue=0)
             TLp.append(Ilp)
-    print(final_labels)
     return final_labels, TLp, lp_type
 
 
